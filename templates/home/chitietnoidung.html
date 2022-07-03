@@ -1,0 +1,13 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+    <div class="container" >
+        <div class="text-center mt-30 mb-30"><h1 class="text-success"><strong>{{ ct.tieude }}</strong></h1></div>
+        <div class="mt-30 mb-30"><strong>Tác Giả: {{ct.nguoidang}} | {{ct.ngaydangbai}}</strong></div>
+        <div class="d-flex text-center" >
+            <div class="text-justify mb-30"><h5>{{ ct.noidungthongtin | safe }}</h5></div>
+        </div>
+
+    </div>
+{% endblock %}
+

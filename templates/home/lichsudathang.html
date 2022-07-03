@@ -1,0 +1,31 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% load cart_tag %}
+{% block content %}
+<div class = "container mt-30 mb-30">
+    <h1 class="text-center">Lịch Sử Đặt Hàng</h1>
+            <hr>
+            <table class="cart-table ml-200">
+                <thead class="cart-table-head">
+                    <tr class="table-head-row text-center">
+                        <th class="px-2 border">Ảnh</th>
+                        <th class="px-2 border">Tên Sản Phẩm</th>
+                        <th class="px-2 border">Giá</th>
+                        <th class="px-2 border">Số Lượng</th>
+                        <th class="px-2 border">Tổng Tiền</th>
+                        <th class="px-2 border">Trạng Thái Đơn Hàng</th>
+                    </tr>
+                </thead>
+                <tr class="table-body-row text-center">
+                {% for i in order %}
+                        <td class="px-2 border"><img src="{{i.hinhdathang}}" alt=""  width="100px" height="100px"></td>
+                        <td class="px-2 border">{{i.sanphamdathang}}</td>
+                        <td class="px-2 border">{{i.giadathang}} VND </td>
+                        <td class="px-2 border text-center">{{i.soluongdathang}}</td>
+                        <td class="px-2 border">{{ i.tongtien }} VND </td>
+                        <td class="px-2 border text-center">{{i.trangthaidathang}}</td>
+                </tr>
+                {% endfor %}
+        </table>
+</div>
+{% endblock %}

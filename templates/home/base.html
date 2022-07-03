@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>News  HTML-5 Template </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico'%}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/ticker-style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css'%}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css'%}">
+    <link rel="stylesheet" href="{% static 'css/slick.css'%}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+    <link rel="stylesheet" href="{% static 'css/stylefix.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart-item.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+<!--    <script  type="text/"> </script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+    <header>
+    <!-- Header Start -->
+    <div class="header-area">
+        <div class="main-header ">
+            <div class="header-top black-bg d-none d-sm-block">
+                <div class="container">
+                    <div class="col-xl-12">
+                        <div class="row d-flex justify-content-between align-items-center">
+                            <div class="header-info-left">
+                                <ul>
+                                    <li class="title" style="font-style: italic"><span class="flaticon-energy"></span>CAYTHUOCNEWS</li>
+                                    <li>TẠP CHÍ CÂY THUỐC VÀ BÀI THUỐC HUFI</li>
+                                </ul>
+                            </div>
+                            <div class="header-info-right">
+                                <ul class="header-date">
+                                    <li><span class="flaticon-calendar"></span> +880166 253 232</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="header-mid gray-bg">
+                <div class="container">
+                    <div class="row d-flex align-items-center">
+                        <!-- Logo -->
+                        <div class="col-xl-3 col-lg-3 col-md-3 d-none d-md-block">
+                            <div class="logo">
+                                <a href="{% url 'index' %}"><img style="width: 200px " src="{% static 'img/logo/logocaythuoc.png' %}" alt=""></a>
+                            </div>
+                        </div>
+
+                        <div style="margin-left: 600px">
+                            {% if user.is_authenticated %}
+                                <span>Xin chào{{ user.username }}</span>
+                                <button class="btn-light" onclick="location.href='{% url 'logout' %}'">Đăng xuất</button>
+                            {% else %}
+                                <button class="btn-light" onclick="location.href='{% url 'đăng kí' %}'">Đăng Ký</button>
+                                <button class="btn-light" onclick="location.href='{% url 'đăng nhập' %}'">Đăng Nhập</button>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="header-bottom header-sticky" style="background: #1ab03f">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-8 col-lg-8 col-md-12 header-flex">
+                            <!-- sticky -->
+                            <div class="sticky-logo">
+                                <a href="{% static 'index.html' %}"><img src="{% static 'img/logo/logo.png'%}" alt=""></a>
+                            </div>
+                            <!-- Main-menu -->
+                            <div class="main-menu d-none d-md-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="{% url 'giới thiệu' %}">GIỚI THIỆU</a></li>
+                                        <li><a href="{% url 'cửa hàng' %}">CỬA HÀNG</a></li>
+                                        <li><a href="{% url 'search' %}">TÌM KIẾM</a></li>
+                                        <li><a href="#">TẠP CHÍ</a>
+                                            <ul class="submenu">
+                                                <li><a href="#">UNG THƯ PHỔI</a></li>
+                                                <li><a href="#">UNG THƯ GAN</a></li>
+                                                <li><a href="#">UNG THƯ CUỐN HỌNG</a></li>
+                                                <li><a href="#">UNG THƯ TỬ CUNG</a></li>
+                                                <li><a href="#">UNG THƯ DA</a></li>
+                                                <li><a href="#">UNG THƯ MÁU</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-4">
+                            <div class="header-right f-right d-none d-lg-block">
+                                <!-- Heder social -->
+                                <ul class="header-social">
+                                    <li><a href="/cart/cart-detail/"><i class="fa fa-shopping-cart"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{{request.session.cart|length}}</span></a></li>
+                                    <li><a href="/lichsudathang/"><i class="fa fa-calendar-check-o"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-md-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+</header>
+     {% block content %}
+
+     {% endblock %}
+<footer >
+    <!-- Footer Start-->
+    <div class="footer-main footer-bg" >
+        <div class="footer-area footer-padding" style="background: #9be88f">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-8">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <!-- logo -->
+                                <div class="footer-logo">
+                                    <a href="index.html"><img src="{% static 'img/logo/logocaythuoc.png' %}"  style="width:250px" alt=""></a>
+                                </div>
+                                <div class="footer-tittle">
+                                    <div class="footer-pera">
+                                        <p>Cây thuốc là bạn với mọi nhà</p>
+                                        <p>140 Lê Trọng Tấn, phường Tây Thạnh, quận Tân Phú, Thành phố Hồ Chí Minh</p>
+                                        <p>Phone: 0964542110</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-7">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4>Bài viết phổ biến</h4>
+                            </div>
+                            <!-- Popular post -->
+                            {% for thongtin  in pb %}
+                            <div class="whats-right-single mb-20">
+                                <div class="whats-right-img">
+                                    <img src="{{ thongtin.hinh.url}}" style="width: 100px; height: 100px" alt="">
+                                </div>
+                                <div class="whats-right-cap">
+                                    <h4><a href="{% url 'chi tiết' thongtin.idthongtin %}">{{ thongtin.tieude }}</a></h4>
+                                    <p>{{ thongtin.nguoidang }} | {{thongtin.ngaydangbai}}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- Popular post -->
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-5 col-sm-7">
+                        <div class="single-footer-caption mb-50">
+                            <div class="banner">
+                                <img src="{% static 'img/gallery/co.jpg'%}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer-bottom aera -->
+        <div class="footer-bottom-area footer-bg" style="background: #ddffdd">
+            <div class="container">
+                <div class="footer-border">
+                    <div class="row d-flex align-items-center">
+                        <div class="col-xl-12 ">
+                            <div class="footer-copy-right text-center"  >
+                                <p style="color: #0b0b0b"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="#" target="_blank">Me</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End-->
+</footer>
+<!--    <script src="{% static 'js/cart.js' %}"></script>-->
+<!--    	<script type="text/javascript" >-->
+<!--		var user ='{{request.user}}'-->
+<!--		function getToken(name) {-->
+<!--		    var cookieValue = null;-->
+<!--		    if (document.cookie && document.cookie !== '') {-->
+<!--		        var cookies = document.cookie.split(';');-->
+<!--		        for (var i = 0; i < cookies.length; i++) {-->
+<!--		            var cookie = cookies[i].trim();-->
+<!--		            // Does this cookie string begin with the name we want?-->
+<!--		            if (cookie.substring(0, name.length + 1) === (name + '=')) {-->
+<!--		                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));-->
+<!--		                break;-->
+<!--		            }-->
+<!--		        }-->
+<!--		    }-->
+<!--		    return cookieValue;-->
+<!--		}-->
+<!--		var csrftoken = getToken('csrftoken')-->
+
+
+<!--	</script>-->
+</body>
+</html>

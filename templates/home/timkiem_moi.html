@@ -1,0 +1,39 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% block content %}
+        {% if timkiembai %}
+                <h2>Tìm kiếm của bạn {{timkiembai}}</h2>
+                <br/>
+         <div class="trending-area fix pt-25 gray-bg">
+                <div class="container">
+                    <div class="trending-main">
+                        <div class="row">
+                        <div class="col-lg-8">
+                                <!-- Trending Top -->
+                                <div class="slider-active">
+
+                                    <!-- Single -->
+                                    <div class="single-slider">
+                                        {% for thongtinbai  in timkiemtt %}
+                                                <div class="trending-top mb-30">
+                                            <div class="trend-top-img">
+                                                <img src="{{ thongtinbai.hinh.url}}" alt="">
+                                                <div class="trend-top-cap">
+                                                    <h2><a href="{% url 'chi tiết' thongtinbai.idthongtin %}" data-animation="fadeInUp" data-delay=".4s" data-duration="1000ms">{{ thongtinbai.tieude }}</a></h2>
+                                                    <p data-animation="fadeInUp" data-delay=".6s" data-duration="1000ms">{{ thongtinbai.nguoidang }} </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                         {% endfor %}
+                                    </div>
+                                </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+         </div>
+        {% else %}
+                <h2>Tìm kiếm gì đó</h2>
+        {% endif %}
+
+{% endblock %}

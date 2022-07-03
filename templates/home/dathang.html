@@ -1,0 +1,107 @@
+{% extends "home/base.html" %}
+{% load static %}
+{% load cart_tag %}
+{% block content %}
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <h1>Chi Tiết Đơn Hàng</h1>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end breadcrumb section -->
+
+
+<!-- cart -->
+
+<div class="mt-80 mb-100 ">
+    <div class="container">
+        <h4>Thông Tin Người Đặt Hàng</h4>
+        <hr>
+        <table class="cart-table ml-200">
+            <thead class="cart-table-head">
+                <tr class="table-head-row text-center">
+                    <th class="px-2 border">Ảnh</th>
+                    <th class="px-2 border">Tên Sản Phẩm</th>
+                    <th class="px-2 border">Giá</th>
+                    <th class="px-2 border">Số Lượng</th>
+                    <th class="px-2 border">Tổng Tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+
+<!--            <div class="form-group col-md-4">-->
+<!--                        <h5>Người Đặt Hàng:</h5>-->
+<!--                        <label class="form-control">{{orders.tendathang}}</label>-->
+<!--                    </div>-->
+                <div class="contact-form row">
+                    <div class="form-group col-md-4">
+                        <h5>Người Đặt Hàng:</h5>
+                        <label class="form-control">{{orders.tendathang}}</label>
+                    </div>
+                    <div class="form-group col-md-4">
+                         <h5>Số Điện Thoại:</h5>
+                        <label class="form-control">{{orders.sdtdathang}}</label>
+                    </div>
+                    <div class="form-group col-md-4">
+                         <h5>Email:</h5>
+                        <label class="form-control">{{orders.maildathang}}</label>
+                    </div>
+                    <div class="form-group col-md-12">
+                         <h5>Địa Chỉ:</h5>
+                        <label class="form-control">{{orders.diachidathang}},{{orders.xaphdh}},{{orders.qhuyendh}},{{orders.thanhphodh}}</label>
+                    </div>
+                </div>
+                <h4>Thông Tin Sản Phẩm</h4>
+                <hr>
+                {% for key,value in request.session.cart.items %}
+                <tr class="table-body-row text-center">
+
+                        <td class="px-2 border"><img src="{{value.image}}" alt=""  width="100px" height="100px"></td>
+                        <td class="px-2 border">{{value.name}}</td>
+                        <td class="px-2 border">{{value.price}} VND </td>
+                        <td class="px-2 border">
+                            <div class="d-flex">
+                                <input size="1" value="{{value.quantity}}" min="1" type="text" class="text-center">
+                            </div>
+                        </td>
+                        <td class="px-2 border">{{ value.price|multiply:value.quantity }} VND </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- end cart -->
+
+<div class="container mb-150" style="margin-left: 700px">
+    <a href="/cuahang/" class=" btn btn-success">Trở Về</a>
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Đặt Hàng</button>
+    <!-- Button trigger modal -->
+</div>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Bạn đã đặt hàng thành công!!!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="location.href='{% url 'index' %}'">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

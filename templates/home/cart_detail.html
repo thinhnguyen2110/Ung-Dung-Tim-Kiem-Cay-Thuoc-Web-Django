@@ -1,0 +1,67 @@
+{% extends 'home/base.html' %}
+{% load static%}
+{% load cart_tag %}
+{% block content %}
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <h1>Giỏ Hàng của bạn</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+
+<!-- cart -->
+<div class="mt-80 mb-100 ">
+    <div class="container">
+        <table class="cart-table ml-200">
+            <thead class="cart-table-head">
+                <tr class="table-head-row text-center">
+                    <th class="px-2 border">Ảnh</th>
+                    <th class="px-2 border">Tên Sản Phẩm</th>
+                    <th class="px-2 border">Giá</th>
+                    <th class="px-2 border">Số Lượng</th>
+                    <th class="px-2 border">Tổng Tiền</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for key,value in request.session.cart.items %}
+                <tr class="table-body-row text-center">
+
+                        <td class="px-2 border"><img src="{{value.image}}" alt=""  width="100px" height="100px"></td>
+                        <td class="px-2 border">{{value.name}}</td>
+                        <td class="px-2 border">{{value.price}} VND </td>
+                        <td class="px-2 border">
+                            <div class="d-flex">
+                                <h5><a class="col border" href="{% url 'item_decrement' value.product_id %}"> - </a></h5>
+                                <input size="1" value="{{value.quantity}}" min="1" type="text" class="text-center">
+                                <h5><a class="col border" href="{% url 'item_increment' value.product_id %}"> + </a></h5>
+                            </div>
+                        </td>
+                        <td class="px-2 border"><p>{{ value.price|multiply:value.quantity }} VND</p></td>
+                        <td class="px-2">
+                            <h5><a href="{% url 'item_clear' key %}"><i class="fa fa-times"></i></a></h5>
+                        </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <hr>
+        <div class="ml-200 mt-10 "><h4>Thành tiền: {{cart_total_amount}} VND</h4></div>
+
+    </div>
+</div>
+<!-- end cart -->
+
+<div class="container mb-150" style="margin-left: 700px">
+    <a href="/cuahang/" class=" btn btn-success">Trở Về</a>
+    <a href="/thongtindathang/" class="btn btn-success" style="heght = 200px">Tiếp Tục</a>
+</div>
+
+{% endblock %}

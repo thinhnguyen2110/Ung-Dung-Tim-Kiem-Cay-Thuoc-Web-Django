@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+{% load static%}
+{% block content %}
+<div class="breadcrumb-text container text-center mt-20">
+    <h1>Nhập Thông Tin Đặt Hàng</h1>
+    <hr>
+     <div class="form-group col-md-12">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d501726.4604547036!2d106.41503136618181!3d10.754666396644348!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529292e8d3dd1%3A0xf15f5aad773c112b!2zSOG7kyBDaMOtIE1pbmgsIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmnhu4d0IE5hbQ!5e0!3m2!1svi!2s!4v1640598064938!5m2!1svi!2s" width="1100" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+<div class="contact-form">
+          <div class="status alert alert-success" style="display: none"></div>
+          <form  method="POST" name="contact-form" class="contact-form row" id="main-contact-form">
+              {% csrf_token %}
+            <div class="form-group col-md-8">
+              <input type="text" name="hoten" class="form-control" required="" placeholder="Họ và Tên">
+            </div>
+            <div class="form-group col-md-4">
+              <input type="text" name="sdt" class="form-control" required="" placeholder="Số Điện Thoại">
+            </div>
+            <div class="form-group col-md-12">
+              <input type="email" name="email" class="form-control" required="" placeholder="Email">
+            </div>
+            <div class="form-group col-md-12">
+              <textarea name="diachi" id="diachi" required="" class="form-control" rows="5" placeholder="Địa Chỉ Nhận Hàng"></textarea>
+            </div>
+             <div class="form-group col-md-4">
+                 <input type="text" name="xaphuong" class="form-control" required="" placeholder="Xã/Phường">
+             </div>
+              <div class="form-group col-md-4">
+                 <input type="text" name="quanhuyen" class="form-control" required="" placeholder="Quận/Huyện">
+             </div>
+              <div class="form-group col-md-4">
+                 <input type="text" name="tinhthanhpho" class="form-control" required="" placeholder="Tỉnh/Thành Phố">
+             </div>
+            <div class="form-group col-md-12">
+                <a href="/cart/cart-detail/" class=" btn btn-success">Trở Về</a>
+                <button type="submit" class=" btn btn-success" name="submit" style="heght = 200px">Tiếp Tục</button>
+            </div>
+          </form>
+        </div>
+
+</div>
+{% endblock %}
